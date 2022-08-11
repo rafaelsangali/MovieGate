@@ -22,7 +22,7 @@ export default function Home() {
             />
             <h1 className="text-white text-xl">SpendTracker</h1>
           </a>
-          <h2 className="text-center mt-10 text-white font-medium text-3xl sm:text-xl md:text-2xl">
+          <h2 className="text-center mt-10 w-2/3 text-white font-medium text-3xl sm:text-xl md:text-2xl">
             Controle suas finanças de forma muito simples
           </h2>
           <h3 className="text-white text-center w-1/2 mt-20">
