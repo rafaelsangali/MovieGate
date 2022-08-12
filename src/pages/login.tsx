@@ -1,8 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useContext } from 'react'
 import { icons } from '../../public'
+import { AuthContext } from '../contexts/AuthContext'
 
 export default function Home() {
+  const { signInWithGoogle } = useContext(AuthContext)
+
   return (
     <>
       <Head>
@@ -29,20 +33,12 @@ export default function Home() {
             Faça seu login com sua conta google
           </h3>
         </div>
-        {/* <button
-          type="button"
-          className="flex items-center gap-16 bg-white rounded py-[18px] px-4"
-        >
-          <div className="flex text-center border-r-2">
-            <Image src={icons.iconGoogle} alt="Icone Google" />
-          </div>
-          <p className="mr-10">Entrar com Google</p>
-        </button> */}
 
         <div className="bg-slate-gray h-1/4 w-screen flex justify-center">
           <button
+            onClick={signInWithGoogle}
             type="button"
-            className="flex gap-[12%] w-4/5 h-14 items-center bg-white rounded -translate-y-1/2"
+            className="flex gap-14 w-80 h-14 items-center bg-white rounded -translate-y-1/2 hover:scale-105 transition-transform"
           >
             <div className="flex border-r-2 p-2">
               <Image
@@ -55,7 +51,6 @@ export default function Home() {
           </button>
         </div>
       </main>
-      {/* <footer className="bg-slate-gray h-1/4 w-full bottom-0 absolute -z-10" /> */}
     </>
   )
 }

@@ -33,6 +33,8 @@
       "no-unused-vars":"off",
       "no-console": "off",
       "react/no-array-index-key":"off",
+      "import/prefer-default-export": "off",
+      "no-undef":"off",
       "react/jsx-filename-extension": [
         1,
         {
