@@ -3,5 +3,5 @@ import iconGoogle from './icons/iconGoogle.svg'
 
 export const icons = {
   iconFinance,
-  iconGoogle
+  iconGoogle,
 }
