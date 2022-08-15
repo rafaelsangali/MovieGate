@@ -1,7 +1,7 @@
-import { useRouter } from 'next/router'
-import { createContext, useState } from 'react'
-import { auth, provider, signInWithPopup } from '../../libs/firebase'
-import { IAuthContext } from './types'
+import { useRouter } from "next/router"
+import { createContext, useState } from "react"
+import { auth, provider, signInWithPopup } from "../../libs/firebase"
+import { IAuthContext } from "./types"
 
 export const AuthContext = createContext({} as IAuthContext)
 
@@ -16,9 +16,9 @@ export function AuthProvider({ children }) {
       .then(res => {
         setShowLoading(false)
         setUser(res)
-        route.push('/')
+        route.push("/")
       })
-      .catch(() => alert('Deu algo de errado. Por favor tente novamente'))
+      .catch(() => alert("Deu algo de errado. Por favor tente novamente"))
   }
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
