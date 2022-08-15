@@ -37,6 +37,7 @@
       "no-undef":"off",
       "no-alert": "off",
       "no-return-assign": "off",
+      "jsx-a11y/anchor-is-valid":"off",
       "react/jsx-filename-extension": [
         1,
         {

@@ -1,17 +1,18 @@
-import format from "date-fns/format"
-import { useState } from "react"
-import { VictoryPie } from "victory"
+import format from 'date-fns/format'
+import { useState } from 'react'
+import { VictoryPie } from 'victory'
+import Footer from '../components/Footer'
 
 const myData = [
-  { title: "react", x: "70%", y: "200" },
-  { title: "vue", x: "60%", y: "100" },
-  { title: "angular", x: "10%", y: "100" },
-  { title: "php", x: "10%", y: "100" },
+  { title: 'react', x: '70%', y: '200' },
+  { title: 'vue', x: '60%', y: '100' },
+  { title: 'angular', x: '10%', y: '100' },
+  { title: 'php', x: '10%', y: '100' },
 ]
 
 export default function Summary() {
   const newDate = new Date()
-  const dataFormat = format(new Date(), "yyyy-MM")
+  const dataFormat = format(new Date(), 'yyyy-MM')
   const [date, setDate] = useState(dataFormat)
 
   return (
@@ -38,9 +39,9 @@ export default function Summary() {
             innerRadius={70}
             labelRadius={90}
             style={{
-              labels: { fill: "white", fontSize: 20, fontWeight: "bold" },
+              labels: { fill: 'white', fontSize: 20, fontWeight: 'bold' },
             }}
-            colorScale={["#5636D3", "#FF872C", "#12A454", "#E83F5B"]}
+            colorScale={['#5636D3', '#FF872C', '#12A454', '#E83F5B']}
             radius={150}
           />
           <div className="flex justify-center items-center">
@@ -54,6 +55,7 @@ export default function Summary() {
           </div>
         </div>
       </main>
+      <Footer />
     </>
   )
 }
