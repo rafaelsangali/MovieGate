@@ -26,10 +26,10 @@ export default function Footer() {
       icon: (
         <CurrencyDollarSimple
           size={25}
-          color={`${router === '/signIn' ? '#E83F5B' : '#969CB2'}`}
+          color={`${router === '/register' ? '#E83F5B' : '#969CB2'}`}
         />
       ),
-      href: '/signIn',
+      href: '/register',
     },
     {
       title: 'Resumo',

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import Footer from '../components/Footer'
 
-export default function SignIn() {
+export default function Register() {
   const router = useRouter().pathname
 
   return (
