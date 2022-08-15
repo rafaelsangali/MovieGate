@@ -1,9 +1,9 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { useContext } from 'react'
-import { icons } from '../../public'
-import { Loading } from '../components/Loading'
-import { AuthContext } from '../contexts/Auth'
+import Head from "next/head"
+import Image from "next/image"
+import { useContext } from "react"
+import { icons } from "../../public"
+import { Loading } from "../components/Loading"
+import { AuthContext } from "../contexts/Auth"
 
 export default function Home() {
   const { signInWithGoogle, showLoading } = useContext(AuthContext)
