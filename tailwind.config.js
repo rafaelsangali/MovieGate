@@ -12,7 +12,8 @@ module.exports = {
         purple: '#5636D3',
         orange: '#FF872C',
         title: '#363F5F',
-        text: '#969CB2'
+        text: '#969CB2',
+        backgroundColour: '#F0F2F5'
       }
     }
   },

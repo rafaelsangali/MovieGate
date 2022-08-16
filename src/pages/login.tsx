@@ -30,7 +30,7 @@ export default function Home() {
           <h2 className="text-center mt-10 w-2/3 text-white font-medium text-3xl sm:text-xl md:text-2xl">
             Controle suas finanças de forma muito simples
           </h2>
-          <h3 className="text-white text-center w-1/2 mt-20">
+          <h3 className="text-white text-center w-1/2 mt-14">
             Faça seu login com sua conta google
           </h3>
         </div>
@@ -39,7 +39,7 @@ export default function Home() {
           <button
             onClick={signInWithGoogle}
             type="button"
-            className="flex gap-14 w-80 h-14 items-center bg-white rounded -translate-y-1/2 hover:scale-105 transition-transform"
+            className="flex gap-[15%] w-4/5 h-14 items-center bg-white rounded -translate-y-1/2 hover:scale-105 transition-transform"
           >
             <div className="flex border-r-2 p-2">
               <Image
