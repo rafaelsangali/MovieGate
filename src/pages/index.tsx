@@ -2,12 +2,13 @@ import Image from 'next/image'
 import { ArrowCircleUp, CurrencyDollar } from 'phosphor-react'
 import { useContext } from 'react'
 import { icons } from '../../public'
-import Footer from '../components/Footer'
+import Navigation from '../components/Navigation'
 import { AuthContext } from '../contexts/Auth'
 
 export default function Home() {
   const { loggedAccount, logOut } = useContext(AuthContext)
-  console.log(loggedAccount)
+  console.log(loggedAccount.photoURL)
+
   return (
     <>
       <main>
@@ -16,7 +17,7 @@ export default function Home() {
             <div className="flex gap-4 items-center text-lg">
               <img
                 src={loggedAccount.photoURL}
-                alt="Icone SpendTracker"
+                alt="Foto de perfil"
                 className="rounded-full flex border-slate-gray border-2 w-12 h-12 relative"
               />
 
@@ -50,7 +51,7 @@ export default function Home() {
             </section>
           </div>
         </div>
-        <div className="w-screen h-screen pt-20 bg-backgroundColour px-6">
+        <div className="w-full h-screen pt-20 bg-backgroundColour px-6">
           <p className="text-black text-lg font-bold">Listagem</p>
           <div className="flex flex-col gap-4">
             <div className="bg-white px-6 py-4 flex flex-col gap-5 rounded-lg">
@@ -69,7 +70,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <Footer />
+      <Navigation />
     </>
   )
 }

@@ -1,7 +1,7 @@
 import format from 'date-fns/format'
 import { useState } from 'react'
 import { VictoryPie } from 'victory'
-import Footer from '../components/Footer'
+import Navigation from '../components/Navigation'
 
 const myData = [
   { title: 'react', x: '70%', y: '200' },
@@ -55,7 +55,7 @@ export default function Summary() {
           </div>
         </div>
       </main>
-      <Footer />
+      <Navigation />
     </>
   )
 }

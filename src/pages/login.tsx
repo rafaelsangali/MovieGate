@@ -39,7 +39,7 @@ export default function Home() {
           <button
             onClick={signInWithGoogle}
             type="button"
-            className="flex gap-[15%] w-4/5 h-14 items-center bg-white rounded -translate-y-1/2 hover:scale-105 transition-transform"
+            className="flex gap-[15%] w-[300px] h-14 items-center bg-white rounded -translate-y-1/2 hover:scale-105 transition-transform"
           >
             <div className="flex border-r-2 p-2">
               <Image
