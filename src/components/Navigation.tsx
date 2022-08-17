@@ -44,7 +44,7 @@ export default function Navigation() {
   ]
 
   return (
-    <nav className="fixed bottom-0 h-[72px] border-t-2 w-screen flex items-center bg-white">
+    <nav className="sticky bottom-0 h-[72px] border-t-2 w-full flex items-center bg-white">
       <div className="w-screen flex justify-around">
         {navObject.map(item => (
           <Link key={item.title} href={item.href} passHref>
