@@ -1,13 +1,9 @@
 import Image from 'next/image'
 import { ArrowCircleUp, CurrencyDollar } from 'phosphor-react'
-import { useContext } from 'react'
 import { icons } from '../../public'
-import Footer from '../components/Footer'
-import { AuthContext } from '../contexts/Auth'
+import Navigation from '../components/Navigation'
 
 export default function Home() {
-  const { loggedAccount, logOut } = useContext(AuthContext)
-  console.log(loggedAccount)
   return (
     <>
       <main>
@@ -15,19 +11,16 @@ export default function Home() {
           <div className="flex items-center px-6 py-4 justify-between">
             <div className="flex gap-4 items-center text-lg">
               <img
-                src={loggedAccount.photoURL}
-                alt="Icone SpendTracker"
+                src="https://picsum.photos/200/300"
+                alt="Foto de perfil"
                 className="rounded-full flex border-slate-gray border-2 w-12 h-12 relative"
               />
 
               <p className="text-white">
-                Olá,{' '}
-                <span className="font-bold">
-                  {loggedAccount.displayName.split(' ')[0]}
-                </span>
+                Olá, <span className="font-bold">Rafael</span>
               </p>
             </div>
-            <button className="flex " type="button" onClick={logOut}>
+            <button className="flex " type="button">
               <Image
                 src={icons.iconPower}
                 alt="Icone Power"
@@ -50,7 +43,7 @@ export default function Home() {
             </section>
           </div>
         </div>
-        <div className="w-screen h-screen pt-20 bg-backgroundColour px-6">
+        <div className="w-full h-screen pt-20 bg-backgroundColour px-6">
           <p className="text-black text-lg font-bold">Listagem</p>
           <div className="flex flex-col gap-4">
             <div className="bg-white px-6 py-4 flex flex-col gap-5 rounded-lg">
@@ -69,7 +62,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <Footer />
+      <Navigation />
     </>
   )
 }
