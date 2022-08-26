@@ -1,14 +1,9 @@
 import Image from 'next/image'
 import { ArrowCircleUp, CurrencyDollar } from 'phosphor-react'
-import { useContext } from 'react'
 import { icons } from '../../public'
 import Navigation from '../components/Navigation'
-import { AuthContext } from '../contexts/Auth'
 
 export default function Home() {
-  const { loggedAccount, logOut } = useContext(AuthContext)
-  console.log(loggedAccount.photoURL)
-
   return (
     <>
       <main>
@@ -16,19 +11,16 @@ export default function Home() {
           <div className="flex items-center px-6 py-4 justify-between">
             <div className="flex gap-4 items-center text-lg">
               <img
-                src={loggedAccount.photoURL}
+                src="https://picsum.photos/200/300"
                 alt="Foto de perfil"
                 className="rounded-full flex border-slate-gray border-2 w-12 h-12 relative"
               />
 
               <p className="text-white">
-                Olá,{' '}
-                <span className="font-bold">
-                  {loggedAccount.displayName.split(' ')[0]}
-                </span>
+                Olá, <span className="font-bold">Rafael</span>
               </p>
             </div>
-            <button className="flex " type="button" onClick={logOut}>
+            <button className="flex " type="button">
               <Image
                 src={icons.iconPower}
                 alt="Icone Power"

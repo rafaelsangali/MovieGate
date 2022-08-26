@@ -1,4 +1,5 @@
-import firebase from 'firebase'
+import { initializeApp } from 'firebase/app'
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -9,9 +10,8 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 }
-const app = firebase.initializeApp(firebaseConfig)
-const db = getFirestore(app)
+const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
 const provider = new GoogleAuthProvider()
 
-export { auth, provider, signInWithPopup, firebaseConfig, db }
+export { auth, provider, signInWithPopup, firebaseConfig }
