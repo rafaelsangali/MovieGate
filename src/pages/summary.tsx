@@ -1,7 +1,7 @@
 import format from 'date-fns/format'
 import { useState } from 'react'
 import { VictoryPie } from 'victory'
-import Footer from '../components/Footer'
+import Navigation from '../components/Navigation'
 
 const myData = [
   { title: 'react', x: '70%', y: '200' },
@@ -22,7 +22,7 @@ export default function Summary() {
           Resumo por categoria
         </h2>
       </header>
-      <main className="bg-light-gray h-screen flex flex-col items-center -z-10">
+      <main className="bg-light-gray min-h-screen flex flex-col items-center -z-10">
         <input
           className="w-80 h-10 my-4 px-2 text-center rounded-md sm:h-12 md:h-14"
           type="month"
@@ -31,7 +31,7 @@ export default function Summary() {
           value={date}
           onChange={e => setDate(e.target.value)}
         />
-        <div className="md:flex md:items-center">
+        <div className="">
           <VictoryPie
             width={500}
             height={500}
@@ -55,7 +55,7 @@ export default function Summary() {
           </div>
         </div>
       </main>
-      <Footer />
+      <Navigation />
     </>
   )
 }

@@ -7,10 +7,10 @@ import {
   ListBullets
 } from 'phosphor-react'
 
-export default function Footer() {
+export default function Navigation() {
   const router = useRouter().pathname
 
-  const navFooter = [
+  const navObject = [
     {
       title: 'Listagem',
       icon: (
@@ -44,9 +44,9 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="fixed bottom-0 h-[72px] border-t-2 w-screen flex items-center bg-white">
-      <nav className="w-screen flex justify-around">
-        {navFooter.map(item => (
+    <nav className="sticky bottom-0 h-[72px] border-t-2 w-full flex items-center bg-white">
+      <div className="w-screen flex justify-around">
+        {navObject.map(item => (
           <Link key={item.title} href={item.href} passHref>
             <a className="flex items-center cursor-pointer">
               {item.icon}
@@ -60,7 +60,7 @@ export default function Footer() {
             </a>
           </Link>
         ))}
-      </nav>
-    </footer>
+      </div>
+    </nav>
   )
 }
