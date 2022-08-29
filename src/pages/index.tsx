@@ -10,12 +10,13 @@ export default function Home() {
         <div className="bg-midnight-blue flex flex-col">
           <div className="flex items-center px-6 py-4 justify-between">
             <div className="flex gap-4 items-center text-lg">
-              <img
-                src="https://picsum.photos/200/300"
-                alt="Foto de perfil"
-                className="rounded-full flex border-slate-gray border-2 w-12 h-12 relative"
-              />
-
+              <div className="overflow-hidden rounded-full flex border-slate-gray border-2 w-12 h-12 relative">
+                <Image
+                  src={loggedAccount.photoURL}
+                  alt="Icone SpendTracker"
+                  layout="fill"
+                />
+              </div>
               <p className="text-white">
                 Olá, <span className="font-bold">Rafael</span>
               </p>
