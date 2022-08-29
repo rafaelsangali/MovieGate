@@ -1,9 +1,21 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { ArrowCircleUp, CurrencyDollar } from 'phosphor-react'
+import { useContext } from 'react'
 import { icons } from '../../public'
 import Navigation from '../components/Navigation'
+import { AuthContext } from '../contexts/Auth'
 
 export default function Home() {
+  const { loggedAccount, logOut, authLoaded } = useContext(AuthContext)
+  const router = useRouter()
+  if (!authLoaded) {
+    return <p>Loading</p>
+  }
+  if (authLoaded && !loggedAccount) {
+    router.push('/login')
+    return <p>Loading</p>
+  }
   return (
     <>
       <main>
@@ -18,10 +30,13 @@ export default function Home() {
                 />
               </div>
               <p className="text-white">
-                Olá, <span className="font-bold">Rafael</span>
+                Olá,{' '}
+                <span className="font-bold">
+                  {loggedAccount.displayName.split(' ')[0]}
+                </span>
               </p>
             </div>
-            <button className="flex " type="button">
+            <button className="flex " type="button" onClick={logOut}>
               <Image
                 src={icons.iconPower}
                 alt="Icone Power"
