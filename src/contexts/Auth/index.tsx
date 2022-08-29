@@ -1,18 +1,26 @@
-import { getAuth, signOut } from 'firebase/auth'
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
 import { useRouter } from 'next/router'
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { auth, provider, signInWithPopup } from '../../libs/firebase'
 import { IAuthContext, IUser } from './types'
 
 export const AuthContext = createContext({} as IAuthContext)
 
 export function AuthProvider({ children }) {
-  const [loggedAccount, setLoggedAccount] = useState<IUser | null>(null)
+  const [user, setUser] = useState<IUser | null>(null)
   const [showLoading, setShowLoading] = useState(false)
+  const [authLoaded, setAuthLoaded] = useState(false)
   const route = useRouter()
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, currentState => {
+      setUser(currentState)
+      setAuthLoaded(true)
+    })
+    return () => unsubscribe()
+  }, [])
+
   const logOut = () => {
-    getAuth()
     signOut(auth)
       .then(() => {
         route.push('/login')
@@ -27,7 +35,7 @@ export function AuthProvider({ children }) {
     signInWithPopup(auth, provider)
       .then(res => {
         setShowLoading(false)
-        setLoggedAccount(res.user)
+        setUser(res.user)
         route.push('/')
       })
       .catch(() => alert('Deu algo de errado. Por favor tente novamente'))
@@ -35,7 +43,13 @@ export function AuthProvider({ children }) {
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
     <AuthContext.Provider
-      value={{ signInWithGoogle, loggedAccount, showLoading, logOut }}
+      value={{
+        signInWithGoogle,
+        loggedAccount: user,
+        showLoading,
+        logOut,
+        authLoaded,
+      }}
     >
       {children}
     </AuthContext.Provider>

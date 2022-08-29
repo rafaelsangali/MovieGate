@@ -1,13 +1,23 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { ArrowCircleUp, CurrencyDollar } from 'phosphor-react'
 import { useContext } from 'react'
 import { icons } from '../../public'
 import Footer from '../components/Footer'
 import { AuthContext } from '../contexts/Auth'
+import { auth } from '../libs/firebase'
 
 export default function Home() {
-  const { loggedAccount, logOut } = useContext(AuthContext)
+  const { logOut, loggedAccount, authLoaded } = useContext(AuthContext)
+  const router = useRouter()
   console.log(loggedAccount)
+  if (!authLoaded) {
+    return <p>Loading</p>
+  }
+  if (authLoaded && !loggedAccount) {
+    router.push('/login')
+    return <p>Loading</p>
+  }
   return (
     <>
       <main>

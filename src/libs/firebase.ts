@@ -1,5 +1,12 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import {
+  getAuth,
+  GoogleAuthProvider,
+  inMemoryPersistence,
+  setPersistence,
+  signInWithPopup,
+  signInWithRedirect,
+} from 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -14,5 +21,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
 const provider = new GoogleAuthProvider()
+// setPersistence(auth, inMemoryPersistence)
+//   .then(() => {
+//     return signInWithRedirect(auth, provider)
+//   })
+//   .catch(error => {
+//     const errorCode = error.code
+//     const errorMessage = error.message
+//   })
 
 export { auth, provider, signInWithPopup }
