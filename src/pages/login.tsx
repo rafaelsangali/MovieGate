@@ -1,8 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useContext } from 'react'
 import { icons } from '../../public'
+import { Loading } from '../components/Loading'
+import { AuthContext } from '../contexts/Auth'
 
 export default function Home() {
+  const { signInWithGoogle, showLoading } = useContext(AuthContext)
+
   return (
     <>
       <Head>
@@ -32,6 +37,7 @@ export default function Home() {
 
         <div className="bg-slate-gray h-1/4 w-screen flex justify-center">
           <button
+            onClick={signInWithGoogle}
             type="button"
             className="flex gap-[15%] w-[300px] h-14 items-center bg-white rounded -translate-y-1/2 hover:scale-105 transition-transform"
           >
@@ -46,7 +52,7 @@ export default function Home() {
           </button>
         </div>
       </main>
-      {/* {showLoading && <Loading />} */}
+      {showLoading && <Loading />}
     </>
   )
 }
