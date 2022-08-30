@@ -1,9 +1,12 @@
 import Image from 'next/image'
 import { ArrowCircleUp, CurrencyDollar } from 'phosphor-react'
+import { useContext } from 'react'
 import { icons } from '../../public'
 import Navigation from '../components/Navigation'
+import { AuthContext } from '../contexts/Auth'
 
 export default function Home() {
+  const { loggedAccount } = useContext(AuthContext)
   return (
     <>
       <main>

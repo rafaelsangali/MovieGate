@@ -8,6 +8,7 @@ interface IAuthContext {
 interface IUser {
   displayName: string
   photoURL: string
+  uid: string
 }
 
 export type { IAuthContext, IUser }
