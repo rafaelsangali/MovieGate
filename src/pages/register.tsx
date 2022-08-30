@@ -23,10 +23,7 @@ export default function Register() {
 
   const insertData = async (e) => {
     e.preventDefault()
-    // const { status } = await supabase.from("transaction").insert(register);
-    const { data } = await supabase.from("transaction").select("*")
-    // console.log(status);
-    console.log(data);
+    const { status } = await supabase.from("transaction").insert(register);
   }
   return (
     <>
