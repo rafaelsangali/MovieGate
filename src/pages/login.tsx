@@ -2,11 +2,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useContext } from 'react'
 import { icons } from '../../public'
-import { Loading } from '../components/Loading'
 import { AuthContext } from '../contexts/Auth'
 
 export default function Home() {
-  const { signInWithGoogle, showLoading } = useContext(AuthContext)
+  const { signInWithGoogle } = useContext(AuthContext)
 
 
   return (
@@ -16,9 +15,9 @@ export default function Home() {
         <link rel="icon" href={icons.iconFinance} />
       </Head>
       <main className="h-screen ">
-        <div className="bg-midnight-blue h-3/4 flex flex-col justify-center items-center ">
+        <div className="flex h-3/4 flex-col items-center justify-center bg-midnight-blue ">
           <a
-            className="sm:scale-125 md:scale-150 transition-transform flex flex-col"
+            className="flex flex-col transition-transform sm:scale-125 md:scale-150"
             href="/"
           >
             <Image
@@ -26,22 +25,21 @@ export default function Home() {
               width={110}
               alt="Icone SpendTracker"
             />
-            <h1 className="text-white text-xl">SpendTracker</h1>
+            <h1 className="text-xl text-white">SpendTracker</h1>
           </a>
-          <h2 className="text-center mt-10 w-2/3 text-white font-medium text-3xl sm:text-xl md:text-2xl">
+          <h2 className="mt-10 w-2/3 text-center text-3xl font-medium text-white sm:text-xl md:text-2xl">
             Controle suas finanças de forma muito simples
           </h2>
-          <h3 className="text-white text-center w-1/2 mt-14">
+          <h3 className="mt-14 w-1/2 text-center text-white">
             Faça seu login com sua conta google
           </h3>
         </div>
 
-        <div className="bg-slate-gray h-1/4 w-screen flex justify-center">
+        <div className="flex h-1/4 w-screen justify-center bg-slate-gray">
           <button
             onClick={signInWithGoogle}
             type="button"
-            className="flex gap-[15%] w-[300px] h-14 items-center bg-white rounded -translate-y-1/2 hover:scale-105 transition-transform"
-            onClick={signInWithGoogle}
+            className="flex h-14 w-[300px] -translate-y-1/2 items-center gap-[15%] rounded bg-white transition-transform hover:scale-105"
           >
             <div className="flex border-r-2 p-2">
               <Image
@@ -54,7 +52,6 @@ export default function Home() {
           </button>
         </div>
       </main>
-      {showLoading && <Loading />}
     </>
   )
 }

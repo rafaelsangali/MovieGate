@@ -51,9 +51,8 @@ export default function Navigation() {
             <a className="flex items-center cursor-pointer">
               {item.icon}
               <p
-                className={`pl-2 ${
-                  router === item.href ? 'text-red' : 'text-text'
-                }`}
+                className={`pl-2
+                ${router === item.href ? 'text-red' : 'text-text'}`}
               >
                 {item.title}
               </p>
