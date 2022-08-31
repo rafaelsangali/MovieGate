@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Baby,
   Bank,
@@ -7,7 +8,6 @@ import {
   Database,
   DotsThreeOutline,
   HouseLine,
-  // eslint-disable-next-line prettier/prettier
   ShoppingCart
 } from 'phosphor-react'
 

@@ -1,8 +1,10 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import { format } from 'date-fns'
 import { ArrowCircleDown, ArrowCircleUp } from 'phosphor-react'
 import { useContext, useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 import Navigation from '../components/Navigation'
 import { AuthContext } from '../contexts/Auth'
 import { supabase } from '../libs/supabase'
@@ -18,51 +20,57 @@ export default function Register() {
     price: 1,
     type: 'deafult',
     category: 'default',
-    createdAt
+    createdAt,
   })
 
-  const insertData = async (e) => {
+  const insertData = async e => {
     e.preventDefault()
-    const { status } = await supabase.from("transaction").insert(register);
+    const { status } = await supabase.from('transaction').insert(register)
+    const isStatusOk = status.toString().startsWith('20')
+    isStatusOk
+      ? toast.success('Informação salva com sucesso')
+      : toast.error('Algo deu errado. Tente novamente')
   }
+
   return (
     <>
-      <header className="bg-midnight-blue h-12 flex justify-center items-center sm:h-14 md:h-16 lg:h-20">
-        <h2 className="text-white text-sm sm:text-base md:text-lg lg:text-xl">
+      <header className="flex h-12 items-center justify-center bg-midnight-blue sm:h-14 md:h-16 lg:h-20">
+        <h2 className="text-sm text-white sm:text-base md:text-lg lg:text-xl">
           Cadastro
         </h2>
       </header>
-      <main className="w-full  bg-backgroundColour justify-items-center py-10">
+      <main className="w-full  justify-items-center bg-backgroundColour py-10">
         <form className="flex flex-col items-center gap-4">
           <input
-            className="w-[310px] h-14 rounded-md px-4"
+            className="h-14 w-[310px] rounded-md px-4"
             type="text"
-            placeholder="Nome"
+            placeholder="Nome da Transação"
             name="name"
             onChange={e => setRegister({ ...register, name: e.target.value })}
             required
           />
           <input
-            className="w-[310px] h-14 rounded-md px-4"
+            className="h-14 w-[310px] rounded-md px-4"
             type="number"
             placeholder="Preço"
             step="0.01"
-            min={1.00}
-            max={10000.000}
-            onChange={e => setRegister({ ...register, price: Number(e.target.value) })}
+            min={1.0}
+            max={10000.0}
+            onChange={e =>
+              setRegister({ ...register, price: Number(e.target.value) })
+            }
             required
           />
           <div className="flex flex-wrap justify-center gap-1">
             <label
-              className="relative items-center w-[153px] h-14"
+              className="relative h-14 w-[153px] items-center"
               htmlFor="income"
               tabIndex={0}
             >
               <input
                 name="income"
-                className={`border-2 rounded-md appearance-none inset-0 absolute cursor-pointer ${register.type === 'income' ? 'bg-green opacity-10' : ''
-                  } `}
-
+                className={`absolute inset-0 cursor-pointer appearance-none rounded-md border-2
+                ${register.type === 'income' ? 'bg-green opacity-10' : ''} `}
                 type="radio"
                 onFocus={e => setRegister({ ...register, type: e.target.name })}
                 required
@@ -74,15 +82,14 @@ export default function Register() {
               <span className="absolute left-14 top-4 text-title">Income</span>
             </label>
             <label
-              className="relative items-center w-[153px] h-14 "
+              className="relative h-14 w-[153px] items-center "
               htmlFor="outcome"
               tabIndex={0}
             >
               <input
                 name="outcome"
-                className={`border-2 rounded-md appearance-none inset-0 absolute cursor-pointer ${register.type === 'outcome' ? 'bg-red opacity-10' : ''
-                  }`}
-
+                className={`absolute inset-0 cursor-pointer appearance-none rounded-md border-2
+                ${register.type === 'outcome' ? 'bg-red opacity-10' : ''}`}
                 type="radio"
                 onFocus={e => setRegister({ ...register, type: e.target.name })}
                 required
@@ -94,11 +101,11 @@ export default function Register() {
               <span className="absolute left-14 top-4 text-title">Outcome</span>
             </label>
           </div>
-          <div className="w-[310px] flex flex-wrap justify-center gap-2">
+          <div className="flex w-[310px] flex-wrap justify-center gap-2">
             {categoryObject.map(item => (
               <div
                 tabIndex={0}
-                className={`flex flex-col items-center justify-center w-20 h-20 cursor-pointer bg-white bg-opacity-50 rounded-md hover:scale-105 hover:shadow-xl transition-transform
+                className={`flex h-20 w-20 cursor-pointer flex-col items-center justify-center rounded-md bg-white bg-opacity-50 transition-transform hover:scale-105 hover:shadow-xl
                 ${register.category === item.category
                     ? 'border-2 border-black'
                     : ''
@@ -113,13 +120,14 @@ export default function Register() {
             ))}
           </div>
           <input
-            className="w-[310px] h-14 bg-purple rounded text-white hover:scale-105 transition-transform cursor-pointer"
+            className="h-14 w-[310px] cursor-pointer rounded bg-purple text-white transition-transform hover:scale-105"
             type="submit"
             value="Enviar"
-            onClick={(e) => insertData(e)}
+            onClick={e => insertData(e)}
           />
         </form>
       </main>
+      <Toaster />
       <Navigation />
     </>
   )
