@@ -44,11 +44,11 @@ export default function Navigation() {
   ]
 
   return (
-    <nav className="sticky bottom-0 h-[72px] border-t-2 w-full flex items-center bg-white">
-      <div className="w-screen flex justify-around">
+    <nav className="sticky bottom-0 flex h-[72px] w-full items-center border-t-2 bg-white">
+      <div className="flex w-screen justify-around">
         {navObject.map(item => (
           <Link key={item.title} href={item.href} passHref>
-            <a className="flex items-center cursor-pointer">
+            <a className="flex cursor-pointer items-center">
               {item.icon}
               <p
                 className={`pl-2
