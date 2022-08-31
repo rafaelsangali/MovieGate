@@ -3,6 +3,7 @@ interface IAuthContext {
   logOut: () => void
   loggedAccount: IUser
   showLoading: boolean
+  authLoaded: boolean
 }
 
 interface IUser {
