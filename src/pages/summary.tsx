@@ -17,14 +17,14 @@ export default function Summary() {
 
   return (
     <>
-      <header className="bg-midnight-blue h-12 flex justify-center items-center sm:h-14 md:h-16 lg:h-20">
-        <h2 className="text-white text-sm sm:text-base md:text-lg lg:text-xl">
+      <header className="flex h-12 items-center justify-center bg-midnight-blue sm:h-14 md:h-16 lg:h-20">
+        <h2 className="text-sm text-white sm:text-base md:text-lg lg:text-xl">
           Resumo por categoria
         </h2>
       </header>
-      <main className="bg-light-gray min-h-screen flex flex-col items-center -z-10">
+      <main className="-z-10 flex min-h-screen flex-col items-center bg-light-gray">
         <input
-          className="w-80 h-10 my-4 px-2 text-center rounded-md sm:h-12 md:h-14"
+          className="my-4 h-10 w-80 rounded-md px-2 text-center sm:h-12 md:h-14"
           type="month"
           min={`${newDate.getFullYear()}-01`}
           max={`${newDate.getFullYear()}-12`}
@@ -44,8 +44,8 @@ export default function Summary() {
             colorScale={['#5636D3', '#FF872C', '#12A454', '#E83F5B']}
             radius={150}
           />
-          <div className="flex justify-center items-center">
-            <div className="bg-white w-72 py-3 px-3 flex justify-between border-l-4 border-purple items-center rounded">
+          <div className="flex items-center justify-center">
+            <div className="flex w-72 items-center justify-between rounded border-l-4 border-purple bg-white py-3 px-3">
               <p>Casa</p>
               <div className="flex">
                 R$

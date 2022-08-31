@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { ArrowCircleUp, CurrencyDollar } from 'phosphor-react'
 import { useContext } from 'react'
 import { icons } from '../../public'
+import Loading from '../components/Loading'
 import Navigation from '../components/Navigation'
 import { AuthContext } from '../contexts/Auth'
 
@@ -10,19 +11,19 @@ export default function Home() {
   const { loggedAccount, logOut, authLoaded } = useContext(AuthContext)
   const router = useRouter()
   if (!authLoaded) {
-    return <p>Loading</p>
+    return <Loading />
   }
   if (authLoaded && !loggedAccount) {
     router.push('/login')
-    return <p>Loading</p>
+    return <Loading />
   }
   return (
     <>
       <main>
-        <div className="bg-midnight-blue flex flex-col">
-          <div className="flex items-center px-6 py-4 justify-between">
-            <div className="flex gap-4 items-center text-lg">
-              <div className="overflow-hidden rounded-full flex border-slate-gray border-2 w-12 h-12 relative">
+        <div className="flex flex-col bg-midnight-blue">
+          <div className="flex items-center justify-between px-6 py-4">
+            <div className="flex items-center gap-4 text-lg">
+              <div className="relative flex h-12 w-12 overflow-hidden rounded-full border-2 border-slate-gray">
                 <Image
                   src={loggedAccount.photoURL}
                   alt="Icone SpendTracker"
@@ -44,14 +45,14 @@ export default function Home() {
               />
             </button>
           </div>
-          <div className="pl-6 -mb-12 flex overflow-x-auto gap-3">
-            <section className="relative min-w-[300px] bg-white p-6 text-title flex flex-col gap-10 justify-between rounded-xl">
+          <div className="-mb-12 flex gap-3 overflow-x-auto pl-6">
+            <section className="relative flex min-w-[300px] flex-col justify-between gap-10 rounded-xl bg-white p-6 text-title">
               <div className="flex justify-between">
                 <p>Entradas</p>
                 <ArrowCircleUp size={45} color="#12A454" weight="light" />
               </div>
               <div className="flex flex-col gap-2">
-                <p className="text-title text-3xl">R$ 17.400,00</p>
+                <p className="text-3xl text-title">R$ 17.400,00</p>
                 <p className="text-sm text-text">
                   Última entrada dia 13 de abril
                 </p>
@@ -59,13 +60,13 @@ export default function Home() {
             </section>
           </div>
         </div>
-        <div className="w-full h-screen pt-20 bg-backgroundColour px-6">
-          <p className="text-black text-lg font-bold">Listagem</p>
+        <div className="h-screen w-full bg-backgroundColour px-6 pt-20">
+          <p className="text-lg font-bold text-black">Listagem</p>
           <div className="flex flex-col gap-4">
-            <div className="bg-white px-6 py-4 flex flex-col gap-5 rounded-lg">
+            <div className="flex flex-col gap-5 rounded-lg bg-white px-6 py-4">
               <div>
                 <p className="text-title">Desenvolvimento de Site</p>
-                <p className="text-green text-xl">R$ 12.000,00</p>
+                <p className="text-xl text-green">R$ 12.000,00</p>
               </div>
               <div className="flex justify-between text-text">
                 <div className="flex gap-2">
