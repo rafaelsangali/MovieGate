@@ -8,6 +8,7 @@ import { AuthContext } from '../contexts/Auth'
 export default function Home() {
   const { signInWithGoogle, showLoading } = useContext(AuthContext)
 
+
   return (
     <>
       <Head>
@@ -40,6 +41,7 @@ export default function Home() {
             onClick={signInWithGoogle}
             type="button"
             className="flex gap-[15%] w-[300px] h-14 items-center bg-white rounded -translate-y-1/2 hover:scale-105 transition-transform"
+            onClick={signInWithGoogle}
           >
             <div className="flex border-r-2 p-2">
               <Image
