@@ -2,20 +2,29 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import { format } from 'date-fns'
 import { ArrowCircleDown, ArrowCircleUp } from 'phosphor-react'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Navigation from '../components/Navigation'
+import { AuthContext } from '../contexts/Auth'
+import { supabase } from '../libs/supabase'
 import { categoryObject } from '../utils/categoryObject'
 
 export default function Register() {
+  const { loggedAccount } = useContext(AuthContext)
+
   const createdAt = format(new Date(), 'dd/MM/yyyy')
   const [register, setRegister] = useState({
+    user: loggedAccount.uid,
     name: 'default',
-    price: '1',
+    price: 1,
     type: 'deafult',
     category: 'default',
+    createdAt
   })
-  console.log(register)
 
+  const insertData = async (e) => {
+    e.preventDefault()
+    const { status } = await supabase.from("transaction").insert(register);
+  }
   return (
     <>
       <header className="bg-midnight-blue h-12 flex justify-center items-center sm:h-14 md:h-16 lg:h-20">
@@ -40,7 +49,7 @@ export default function Register() {
             step="0.01"
             min={1.00}
             max={10000.000}
-            onChange={e => setRegister({ ...register, price: e.target.value })}
+            onChange={e => setRegister({ ...register, price: Number(e.target.value) })}
             required
           />
           <div className="flex flex-wrap justify-center gap-1">
@@ -107,6 +116,7 @@ export default function Register() {
             className="w-[310px] h-14 bg-purple rounded text-white hover:scale-105 transition-transform cursor-pointer"
             type="submit"
             value="Enviar"
+            onClick={(e) => insertData(e)}
           />
         </form>
       </main>

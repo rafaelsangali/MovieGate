@@ -17,6 +17,7 @@ export default function Home() {
     router.push('/login')
     return <Loading />
   }
+
   return (
     <>
       <main>

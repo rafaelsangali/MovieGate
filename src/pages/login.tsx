@@ -7,6 +7,7 @@ import { AuthContext } from '../contexts/Auth'
 export default function Home() {
   const { signInWithGoogle } = useContext(AuthContext)
 
+
   return (
     <>
       <Head>
